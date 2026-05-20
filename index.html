@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebCraft | ويب كرافت — نصمم مستقبلك الرقمي</title>
+    <meta name="description" content="وكالة تصميم مواقع احترافية — متاجر إلكترونية، مواقع عقارية، بوابات إخبارية، سياحة، تعليم">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+    /* ─────────────────────────────────────────
+       CUSTOM PROPERTIES
+    ───────────────────────────────────────── */
+    :root {
+        --p:        #7C3AED;
+        --p-lt:     #A78BFA;
+        --s:        #06B6D4;
+        --s-lt:     #67E8F9;
+        --acc:      #F59E0B;
+        --dk:       #050510;
+        --dk2:      #0D0D1F;
+        --dk3:      #141428;
+        --dkc:      #1A1A35;
+        --tx:       #E2E8F0;
+        --tx-m:     #94A3B8;
+        --tx-d:     #64748B;
+        --border:   rgba(124,58,237,.2);
+        --g1:       linear-gradient(135deg,#7C3AED,#06B6D4);
+        --g2:       linear-gradient(135deg,#7C3AED,#EC4899);
+        --glass:    rgba(255,255,255,.03);
+        --gb:       rgba(255,255,255,.07);
+        --shadow:   0 25px 50px -12px rgba(124,58,237,.3);
+        --r:        16px;
+        --r-sm:     8px;
+        --r-lg:     24px;
+        --ease:     all .3s cubic-bezier(.4,0,.2,1);
+        --fa:       'Tajawal', sans-serif;
+        --fe:       'Inter', sans-serif;
+        --f:        var(--fa);
+    }
+    body.en { --f: var(--fe); }
+
+    /* ─────────────────────────────────────────
+       RESET & BASE
+    ───────────────────────────────────────── */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--f);background:var(--dk);color:var(--tx);line-height:1.7;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%}
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-track{background:var(--dk2)}
+    ::-webkit-scrollbar-thumb{background:var(--p);border-radius:3px}
+
+    /* ─────────────────────────────────────────
+       UTILITIES
+    ───────────────────────────────────────── */
+    .container{width:100%;max-width:1200px;margin:0 auto;padding:0 24px}
+    .section{padding:110px 0}
+    .gt{background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+    /* lang visibility */
+    body:not(.en) .en-t{display:none}
+    body.en .ar-t{display:none}
+
+    /* reveal */
+    .rv{opacity:0;transform:translateY(32px);transition:opacity .65s ease,transform .65s ease}
+    .rv.in{opacity:1;transform:none}
+    .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+    .d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+    /* ─────────────────────────────────────────
+       AMBIENT ORBS
+    ───────────────────────────────────────── */
+    .orbs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+    .orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.12;animation:orbF 22s ease-in-out infinite}
+    .o1{width:700px;height:700px;background:#7C3AED;top:-220px;right:-200px;animation-delay:0s}
+    .o2{width:550px;height:550px;background:#06B6D4;bottom:10%;left:-180px;animation-delay:-8s}
+    .o3{width:450px;height:450px;background:#EC4899;top:45%;right:25%;animation-delay:-16s}
+    @keyframes orbF{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-25px) scale(1.06)}66%{transform:translate(-18px,22px) scale(.94)}}
+
+    /* ─────────────────────────────────────────
+       HEADER / NAV
+    ───────────────────────────────────────── */
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;padding:22px 0;transition:var(--ease)}
+    header.scrolled{background:rgba(5,5,16,.88);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-bottom:1px solid var(--gb);padding:14px 0}
+
+    nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+
+    /* Logo */
+    .logo{display:flex;align-items:center;gap:12px;font-weight:800}
+    .logo-mark{width:46px;height:46px;border-radius:13px;background:var(--g1);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 24px rgba(124,58,237,.5);animation:glowPulse 3s ease-in-out infinite}
+    @keyframes glowPulse{0%,100%{box-shadow:0 0 24px rgba(124,58,237,.5)}50%{box-shadow:0 0 40px rgba(6,182,212,.7)}}
+    .logo-mark svg{width:24px;height:24px}
+    .logo-words{display:flex;flex-direction:column;line-height:1.1}
+    .logo-en{font-family:var(--fe);font-size:1.15rem;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .logo-ar{font-family:var(--fa);font-size:.72rem;color:var(--tx-m);margin-top:1px}
+
+    /* Nav links */
+    .nav-links{display:flex;align-items:center;gap:4px;list-style:none}
+    .nav-links a{padding:8px 15px;border-radius:var(--r-sm);font-size:.875rem;font-weight:500;color:var(--tx-m);transition:var(--ease)}
+    .nav-links a:hover{color:var(--tx);background:var(--glass)}
+
+    /* Nav right */
+    .nav-right{display:flex;align-items:center;gap:10px}
+
+    /* Language pill */
+    .lang-pill{display:flex;align-items:center;background:var(--dkc);border:1px solid var(--border);border-radius:50px;padding:4px;gap:2px}
+    .lbtn{padding:6px 14px;border-radius:50px;font-size:.78rem;font-weight:700;cursor:pointer;border:none;background:transparent;color:var(--tx-m);font-family:var(--fe);transition:var(--ease)}
+    .lbtn.on{background:var(--g1);color:#fff}
+
+    /* Buttons */
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border-radius:50px;font-size:.875rem;font-weight:600;cursor:pointer;transition:var(--ease);border:none;font-family:var(--f)}
+    .btn-p{background:var(--g1);color:#fff;box-shadow:0 4px 22px rgba(124,58,237,.4)}
+    .btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(124,58,237,.55)}
+    .btn-o{background:transparent;color:var(--tx);border:1px solid var(--border)}
+    .btn-o:hover{border-color:var(--p);background:rgba(124,58,237,.08)}
+
+    /* Hamburger */
+    .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;z-index:1100}
+    .ham span{display:block;width:24px;height:2px;background:var(--tx);border-radius:2px;transition:var(--ease)}
+    .ham.on span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .ham.on span:nth-child(2){opacity:0}
+    .ham.on span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+    /* Mobile overlay menu */
+    .mob-menu{display:none;position:fixed;inset:0;z-index:1050;background:rgba(5,5,16,.97);backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity .3s ease}
+    .mob-menu.open{opacity:1;pointer-events:all;display:flex}
+    .mob-menu a{font-size:1.6rem;font-weight:800;color:var(--tx-m);transition:var(--ease)}
+    .mob-menu a:hover{color:var(--tx)}
+
+    /* ─────────────────────────────────────────
+       SECTION HEADERS (reusable)
+    ───────────────────────────────────────── */
+    .sec-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.3);color:var(--p-lt);padding:6px 16px;border-radius:50px;font-size:.78rem;font-weight:700;margin-bottom:16px;letter-spacing:.5px}
+    .sec-title{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:900;line-height:1.2;margin-bottom:14px}
+    .sec-desc{font-size:1rem;color:var(--tx-m);max-width:600px}
+    .sec-head{margin-bottom:64px}
+    .sec-head.center{text-align:center}
+    .sec-head.center .sec-desc{margin:0 auto}
+
+    /* ─────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────── */
+    #home{min-height:100vh;display:flex;align-items:center;padding-top:110px;position:relative}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+
+    .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);color:var(--acc);padding:8px 18px;border-radius:50px;font-size:.82rem;font-weight:700;margin-bottom:26px}
+
+    .h-title{font-size:clamp(2.4rem,5vw,4rem);font-weight:900;line-height:1.15;margin-bottom:22px}
+    .h-sub{font-size:1.05rem;color:var(--tx-m);margin-bottom:36px;max-width:480px}
+    .h-btns{display:flex;gap:14px;flex-wrap:wrap}
+
+    /* Browser mockup */
+    .mockup-wrap{position:relative}
+    .browser{background:var(--dkc);border-radius:var(--r-lg);border:1px solid var(--gb);overflow:hidden;box-shadow:0 40px 80px rgba(124,58,237,.22),0 0 0 1px rgba(255,255,255,.04);animation:floatB 7s ease-in-out infinite}
+    @keyframes floatB{0%,100%{transform:translateY(0) rotate(-1.2deg)}50%{transform:translateY(-16px) rotate(0deg)}}
+    .b-bar{background:var(--dk3);padding:13px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--gb)}
+    .b-dots{display:flex;gap:6px}
+    .b-dot{width:12px;height:12px;border-radius:50%}
+    .b-dot:nth-child(1){background:#EF4444}.b-dot:nth-child(2){background:#F59E0B}.b-dot:nth-child(3){background:#22C55E}
+    .b-url{flex:1;background:var(--dk2);border-radius:var(--r-sm);padding:6px 12px;font-size:.72rem;font-family:var(--fe);color:var(--tx-m)}
+    .b-body{padding:22px;min-height:290px}
+
+    /* Mockup content */
+    .mk-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+    .mk-logo-bar{width:78px;height:11px;background:var(--g1);border-radius:6px}
+    .mk-nav{display:flex;gap:7px}
+    .mk-nav span{width:38px;height:7px;background:var(--dk3);border-radius:4px}
+    .mk-hero{background:var(--g1);border-radius:var(--r);padding:28px;margin-bottom:16px}
+    .mk-h1{width:58%;height:13px;background:rgba(255,255,255,.35);border-radius:7px;margin-bottom:9px}
+    .mk-h2{width:38%;height:8px;background:rgba(255,255,255,.22);border-radius:4px;margin-bottom:20px}
+    .mk-hbtn{width:76px;height:27px;background:rgba(255,255,255,.28);border-radius:14px}
+    .mk-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+    .mk-card{background:var(--dk3);border-radius:var(--r-sm);padding:11px}
+    .mk-icon{width:22px;height:22px;border-radius:6px;margin-bottom:7px}
+    .mk-card:nth-child(1) .mk-icon{background:rgba(124,58,237,.4)}
+    .mk-card:nth-child(2) .mk-icon{background:rgba(6,182,212,.4)}
+    .mk-card:nth-child(3) .mk-icon{background:rgba(245,158,11,.4)}
+    .mk-line{width:70%;height:5px;background:var(--dk2);border-radius:3px;margin-bottom:5px}
+    .mk-line.s{width:44%}
+
+    /* Floating cards */
+    .fc{position:absolute;background:var(--dkc);border:1px solid var(--gb);border-radius:var(--r);padding:12px 18px;display:flex;align-items:center;gap:10px;box-shadow:0 12px 40px rgba(0,0,0,.3);backdrop-filter:blur(12px);font-size:.78rem;z-index:10}
+    .fc-1{bottom:-24px;right:-24px;animation:fc1 4.5s ease-in-out infinite}
+    .fc-2{top:18px;left:-36px;animation:fc2 5.5s ease-in-out infinite}
+    @keyframes fc1{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    @keyframes fc2{0%,100%{transform:translateY(0)}50%{transform:translateY(9px)}}
+    .fc-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0}
+    .fc-info strong{display:block;font-size:.82rem;font-weight:700}
+    .fc-info span{color:var(--tx-m);font-size:.72rem}
+
+    /* ─────────────────────────────────────────
+       STATS
+    ───────────────────────────────────────── */
+    #stats{padding:64px 0}
+    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);border-radius:var(--r-lg);overflow:hidden}
+    .stat{background:var(--dk2);padding:42px 30px;text-align:center;position:relative;overflow:hidden;transition:var(--ease)}
+    .stat::after{content:'';position:absolute;inset:0;background:var(--g1);opacity:0;transition:var(--ease)}
+    .stat:hover::after{opacity:.05}
+    .stat-n{font-size:3rem;font-weight:900;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:8px;font-family:var(--fe)}
+    .stat-l{font-size:.9rem;color:var(--tx-m);font-weight:500}
+
+    /* ─────────────────────────────────────────
+       SERVICES
+    ───────────────────────────────────────── */
+    #services{background:linear-gradient(180deg,var(--dk) 0%,var(--dk2) 60%,var(--dk) 100%)}
+    .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .svc-card{background:var(--dkc);border:1px solid var(--gb);border-radius:var(--r-lg);padding:36px 30px;position:relative;overflow:hidden;transition:var(--ease);cursor:default}
+    .svc-card::before,.svc-card::after{content:'';position:absolute;inset:-1px;background:var(--g1);border-radius:var(--r-lg);opacity:0;transition:var(--ease);z-index:0}
+    .svc-card::after{inset:1px;background:var(--dkc);border-radius:calc(var(--r-lg) - 1px)}
+    .svc-card:hover{transform:translateY(-9px);box-shadow:var(--shadow)}
+    .svc-card:hover::before{opacity:1}
+    .svc-inner{position:relative;z-index:2}
+    .svc-num{position:absolute;top:20px;inset-inline-end:24px;font-size:3.2rem;font-weight:900;color:rgba(255,255,255,.03);font-family:var(--fe);z-index:2}
+    .svc-ico{width:58px;height:58px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:1.7rem;margin-bottom:20px}
+    .svc-title{font-size:1.15rem;font-weight:700;margin-bottom:11px}
+    .svc-desc{font-size:.87rem;color:var(--tx-m);line-height:1.75}
+
+    /* ─────────────────────────────────────────
+       PORTFOLIO
+    ───────────────────────────────────────── */
+    #portfolio{background:var(--dk)}
+    .pf-filters{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:44px}
+    .fb{padding:10px 22px;border-radius:50px;font-size:.82rem;font-weight:600;cursor:pointer;transition:var(--ease);border:1px solid var(--border);background:transparent;color:var(--tx-m);font-family:var(--f)}
+    .fb.on,.fb:hover{background:var(--g1);color:#fff;border-color:transparent}
+
+    .pf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .pf-item{background:var(--dkc);border:1px solid var(--gb);border-radius:var(--r);overflow:hidden;transition:var(--ease);cursor:pointer;border-top-width:3px}
+    .pf-item:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(124,58,237,.22);border-color:rgba(124,58,237,.4)}
+    .pf-item.hide{display:none}
+
+    /* Category top accent */
+    .pf-item[data-c="ec"]{border-top-color:#06B6D4}
+    .pf-item[data-c="re"]{border-top-color:#F59E0B}
+    .pf-item[data-c="nw"]{border-top-color:#EF4444}
+    .pf-item[data-c="tr"]{border-top-color:#EC4899}
+    .pf-item[data-c="ca"]{border-top-color:#22C55E}
+    .pf-item[data-c="ed"]{border-top-color:#A78BFA}
+
+    /* No thumbnail */
+    .pf-thumb{display:none}
+
+    .pf-info{padding:16px}
+    .pf-cat{display:inline-flex;align-items:center;gap:5px;font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:50px;margin-bottom:8px}
+    .pf-name{font-size:.88rem;font-weight:700;margin-bottom:3px}
+    .pf-url{font-size:.72rem;color:var(--tx-d);font-family:var(--fe)}
+    .pf-visit{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:.72rem;font-weight:700;color:var(--p-lt);opacity:0;transform:translateY(4px);transition:var(--ease)}
+    .pf-item:hover .pf-visit{opacity:1;transform:none}
+
+    /* Category color chips */
+    .c-ec{background:rgba(6,182,212,.12);color:#06B6D4}
+    .c-re{background:rgba(245,158,11,.12);color:#F59E0B}
+    .c-nw{background:rgba(239,68,68,.12);color:#EF4444}
+    .c-tr{background:rgba(236,72,153,.12);color:#EC4899}
+    .c-ca{background:rgba(34,197,94,.12);color:#22C55E}
+    .c-ed{background:rgba(124,58,237,.12);color:#A78BFA}
+
+    /* Thumb backgrounds */
+    .bg-ec{background:linear-gradient(135deg,#0F2027,#203A43,#2C5364)}
+    .bg-re{background:linear-gradient(135deg,#1A1A2E,#16213E,#0F3460)}
+    .bg-nw{background:linear-gradient(135deg,#1F1C18,#2D2416,#3D2B1F)}
+    .bg-tr{background:linear-gradient(135deg,#1A0A2E,#2E1A4A,#1A0A3E)}
+    .bg-ca{background:linear-gradient(135deg,#0D1B0D,#1A2E1A,#1F3A1F)}
+    .bg-ed{background:linear-gradient(135deg,#0A1628,#142240,#1A2E50)}
+
+    /* ─────────────────────────────────────────
+       WHY US
+    ───────────────────────────────────────── */
+    #why{background:linear-gradient(180deg,var(--dk) 0%,var(--dk2) 100%)}
+    .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .why-feats{display:flex;flex-direction:column;gap:18px}
+    .wf{display:flex;gap:18px;align-items:flex-start;padding:22px;background:var(--dkc);border:1px solid var(--gb);border-radius:var(--r);transition:var(--ease)}
+    .wf:hover{border-color:rgba(124,58,237,.45);transform:translateX(-4px)}
+    body.en .wf:hover{transform:translateX(4px)}
+    .wf-ico{width:50px;height:50px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0}
+    .wf-t h4{font-size:.95rem;font-weight:700;margin-bottom:5px}
+    .wf-t p{font-size:.85rem;color:var(--tx-m)}
+
+    /* Process card */
+    .proc-card{background:var(--dkc);border:1px solid var(--gb);border-radius:var(--r-lg);padding:36px}
+    .proc-card h4{font-size:.95rem;font-weight:700;margin-bottom:24px}
+    .proc-steps{display:flex;flex-direction:column;gap:14px}
+    .ps{display:flex;align-items:center;gap:14px}
+    .ps-n{width:34px;height:34px;border-radius:50%;background:var(--g1);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;font-family:var(--fe)}
+    .ps-bar{flex:1;height:7px;background:var(--dk3);border-radius:4px;overflow:hidden}
+    .ps-fill{height:100%;border-radius:4px;background:var(--g1)}
+    .ps-lbl{font-size:.82rem;color:var(--tx-m);text-align:end;width:80px;flex-shrink:0}
+    body.en .ps-lbl{text-align:start}
+    .ps-name{font-size:.82rem;margin-bottom:5px}
+
+    /* Mini testimonial */
+    .mini-t{margin-top:26px;padding-top:22px;border-top:1px solid var(--gb)}
+    .mini-t-top{display:flex;align-items:center;gap:12px}
+    .mini-avatar{width:44px;height:44px;border-radius:50%;background:var(--g1);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+    .mini-name{font-size:.85rem;font-weight:700}
+    .mini-role{font-size:.72rem;color:var(--tx-m)}
+    .mini-stars{margin-inline-start:auto;color:#F59E0B;letter-spacing:1px}
+    .mini-quote{font-size:.82rem;color:var(--tx-m);margin-top:12px;font-style:italic}
+
+    /* ─────────────────────────────────────────
+       CONTACT
+    ───────────────────────────────────────── */
+    #contact{background:var(--dk)}
+    .ct-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:60px;align-items:start}
+    .ct-items{display:flex;flex-direction:column;gap:22px}
+    .ct-item{display:flex;align-items:flex-start;gap:16px}
+    .ct-ico{width:48px;height:48px;border-radius:var(--r);background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+    .ct-item h4{font-size:.88rem;font-weight:600;margin-bottom:4px}
+    .ct-item p,.ct-item a{font-size:.85rem;color:var(--tx-m)}
+    .social-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .s-pill{display:flex;align-items:center;gap:7px;padding:8px 16px;border-radius:50px;font-size:.78rem;font-weight:700;transition:var(--ease)}
+    .s-pill:hover{transform:translateY(-2px)}
+    .sp-wa{background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.2);color:#25D366}
+    .sp-fb{background:rgba(24,119,242,.1);border:1px solid rgba(24,119,242,.2);color:#1877F2}
+    .sp-ig{background:rgba(225,48,108,.1);border:1px solid rgba(225,48,108,.2);color:#E1306C}
+
+    .ct-form{background:var(--dkc);border:1px solid var(--gb);border-radius:var(--r-lg);padding:40px}
+    .ct-form h3{font-size:1.15rem;font-weight:700;margin-bottom:28px}
+    .f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .fg{margin-bottom:18px}
+    .fl{display:block;font-size:.82rem;font-weight:600;color:var(--tx-m);margin-bottom:8px}
+    .fi,.fta,.fsel{width:100%;padding:13px 18px;background:var(--dk3);border:1px solid var(--gb);border-radius:var(--r);color:var(--tx);font-size:.875rem;font-family:var(--f);outline:none;transition:var(--ease)}
+    .fi:focus,.fta:focus,.fsel:focus{border-color:var(--p);box-shadow:0 0 0 3px rgba(124,58,237,.15)}
+    .fta{resize:vertical;min-height:118px}
+    .fsel option{background:var(--dk3)}
+    .f-submit{width:100%;justify-content:center;padding:15px;font-size:.95rem}
+
+    /* ─────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────── */
+    footer{background:var(--dk2);border-top:1px solid var(--gb);padding:64px 0 32px}
+    .ft-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:52px}
+    .ft-brand p{font-size:.87rem;color:var(--tx-m);margin:16px 0 20px;max-width:280px}
+    .soc-links{display:flex;gap:10px}
+    .soc-a{width:40px;height:40px;border-radius:10px;background:var(--dk3);border:1px solid var(--gb);display:flex;align-items:center;justify-content:center;font-size:.95rem;transition:var(--ease)}
+    .soc-a:hover{background:var(--p);border-color:var(--p);transform:translateY(-2px)}
+    .ft-col h4{font-size:.92rem;font-weight:700;margin-bottom:18px}
+    .ft-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .ft-links a{font-size:.85rem;color:var(--tx-m);transition:var(--ease);display:flex;align-items:center;gap:8px}
+    .ft-links a:hover{color:var(--tx)}
+    .ft-links a::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--p);flex-shrink:0}
+    .ft-bot{border-top:1px solid var(--gb);padding-top:28px;display:flex;align-items:center;justify-content:space-between}
+    .ft-bot p{font-size:.82rem;color:var(--tx-d)}
+
+    /* ─────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────── */
+    @media(max-width:1024px){
+        .hero-grid{grid-template-columns:1fr;text-align:center}
+        .h-sub{margin-inline:auto;margin-bottom:36px}
+        .h-btns{justify-content:center}
+        .mockup-wrap{max-width:580px;margin:0 auto}
+        .svc-grid{grid-template-columns:repeat(2,1fr)}
+        .pf-grid{grid-template-columns:repeat(3,1fr)}
+        .stats-row{grid-template-columns:repeat(2,1fr)}
+        .why-grid{grid-template-columns:1fr;gap:40px}
+        .ct-grid{grid-template-columns:1fr;gap:40px}
+        .ft-grid{grid-template-columns:1fr 1fr;gap:30px}
+    }
+    @media(max-width:768px){
+        .nav-links,.btn-nav{display:none}
+        .ham{display:flex}
+        .section{padding:72px 0}
+        .svc-grid{grid-template-columns:1fr}
+        .pf-grid{grid-template-columns:repeat(2,1fr)}
+        .f-row{grid-template-columns:1fr}
+        .ft-grid{grid-template-columns:1fr}
+        .ft-bot{flex-direction:column;gap:10px;text-align:center}
+        .fc{display:none}
+        .stats-row{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:480px){
+        .hero-grid{gap:40px}
+        .h-title{font-size:2rem}
+        .stat-n{font-size:2.4rem}
+    }
+    </style>
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════ AMBIENT ═══ -->
+<div class="orbs" aria-hidden="true">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+</div>
+
+<!-- ═══════════════════════════════════════ MOBILE MENU ═══ -->
+<nav class="mob-menu" id="mobMenu" role="dialog" aria-label="القائمة">
+    <a href="#home"      onclick="closeMob()"><span class="ar-t">الرئيسية</span><span class="en-t">Home</span></a>
+    <a href="#services"  onclick="closeMob()"><span class="ar-t">خدماتنا</span><span class="en-t">Services</span></a>
+    <a href="#portfolio" onclick="closeMob()"><span class="ar-t">أعمالنا</span><span class="en-t">Portfolio</span></a>
+    <a href="#why"       onclick="closeMob()"><span class="ar-t">لماذا نحن</span><span class="en-t">Why Us</span></a>
+    <a href="#contact"   onclick="closeMob()"><span class="ar-t">تواصل معنا</span><span class="en-t">Contact</span></a>
+</nav>
+
+<!-- ═══════════════════════════════════════ HEADER ═══ -->
+<header id="hdr">
+    <div class="container">
+        <nav>
+            <!-- Logo -->
+            <a href="#home" class="logo">
+                <div class="logo-mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 18 22 12 16 6"/>
+                        <polyline points="8 6 2 12 8 18"/>
+                    </svg>
+                </div>
+                <div class="logo-words">
+                    <span class="logo-en">WebCraft</span>
+                    <span class="logo-ar">ويب كرافت</span>
+                </div>
+            </a>
+
+            <!-- Desktop nav -->
+            <ul class="nav-links">
+                <li><a href="#home"><span class="ar-t">الرئيسية</span><span class="en-t">Home</span></a></li>
+                <li><a href="#services"><span class="ar-t">خدماتنا</span><span class="en-t">Services</span></a></li>
+                <li><a href="#portfolio"><span class="ar-t">أعمالنا</span><span class="en-t">Portfolio</span></a></li>
+                <li><a href="#why"><span class="ar-t">لماذا نحن</span><span class="en-t">Why Us</span></a></li>
+                <li><a href="#contact"><span class="ar-t">تواصل معنا</span><span class="en-t">Contact</span></a></li>
+            </ul>
+
+            <!-- Right controls -->
+            <div class="nav-right">
+                <div class="lang-pill" role="group" aria-label="اختر اللغة">
+                    <button class="lbtn on" id="lbAR" onclick="setLang('ar')">AR</button>
+                    <button class="lbtn"    id="lbEN" onclick="setLang('en')">EN</button>
+                </div>
+                <a href="#contact" class="btn btn-p btn-nav">
+                    <span class="ar-t">ابدأ مشروعك</span>
+                    <span class="en-t">Start Project</span>
+                </a>
+                <div class="ham" id="ham" onclick="toggleMob()" aria-label="القائمة" role="button" tabindex="0">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- ═══════════════════════════════════════ HERO ═══ -->
+<section id="home">
+    <div class="container">
+        <div class="hero-grid">
+
+            <!-- Text -->
+            <div class="hero-text rv">
+                <div class="badge">
+                    ✦ <span class="ar-t">وكالة تصميم مواقع احترافية</span><span class="en-t">Professional Web Design Agency</span>
+                </div>
+                <h1 class="h-title">
+                    <span class="ar-t">نصنع <span class="gt">تجارب رقمية</span><span style="display:block;margin-top:10px">تترك أثراً حقيقياً</span></span>
+                    <span class="en-t">We Craft <span class="gt">Digital Experiences</span><span style="display:block;margin-top:10px">That Make an Impact</span></span>
+                </h1>
+                <p class="h-sub">
+                    <span class="ar-t">نحوّل أفكارك إلى مواقع ويب استثنائية تبهر زوارك وتحقق أهدافك — من المتاجر الإلكترونية إلى البوابات الإخبارية والمواقع التعليمية.</span>
+                    <span class="en-t">We turn your ideas into exceptional websites that impress visitors and achieve your goals — from e-commerce stores to news portals and educational platforms.</span>
+                </p>
+                <div class="h-btns">
+                    <a href="#portfolio" class="btn btn-p">
+                        🚀 <span class="ar-t">شاهد أعمالنا</span><span class="en-t">View Our Work</span>
+                    </a>
+                    <a href="#contact" class="btn btn-o">
+                        <span class="ar-t">تواصل معنا</span><span class="en-t">Get In Touch</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Visual -->
+            <div class="mockup-wrap rv d2">
+                <div class="browser">
+                    <div class="b-bar">
+                        <div class="b-dots"><div class="b-dot"></div><div class="b-dot"></div><div class="b-dot"></div></div>
+                        <div class="b-url">webcraft.design</div>
+                    </div>
+                    <div class="b-body">
+                        <div class="mk-top">
+                            <div class="mk-logo-bar"></div>
+                            <div class="mk-nav"><span></span><span></span><span></span></div>
+                        </div>
+                        <div class="mk-hero">
+                            <div class="mk-h1"></div>
+                            <div class="mk-h2"></div>
+                            <div class="mk-hbtn"></div>
+                        </div>
+                        <div class="mk-cards">
+                            <div class="mk-card"><div class="mk-icon"></div><div class="mk-line"></div><div class="mk-line s"></div></div>
+                            <div class="mk-card"><div class="mk-icon"></div><div class="mk-line"></div><div class="mk-line s"></div></div>
+                            <div class="mk-card"><div class="mk-icon"></div><div class="mk-line"></div><div class="mk-line s"></div></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Floating badges -->
+                <div class="fc fc-1">
+                    <div class="fc-ico" style="background:rgba(34,197,94,.15);color:#22C55E">✓</div>
+                    <div class="fc-info">
+                        <strong><span class="ar-t">تم التسليم</span><span class="en-t">Delivered</span></strong>
+                        <span><span class="ar-t">في الموعد المحدد</span><span class="en-t">On schedule</span></span>
+                    </div>
+                </div>
+                <div class="fc fc-2">
+                    <div class="fc-ico" style="background:rgba(245,158,11,.15);color:#F59E0B">⭐</div>
+                    <div class="fc-info">
+                        <strong><span class="ar-t">تقييم 5 نجوم</span><span class="en-t">5-Star Rating</span></strong>
+                        <span><span class="ar-t">من عملائنا</span><span class="en-t">From our clients</span></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════ STATS ═══ -->
+<section id="stats">
+    <div class="container">
+        <div class="stats-row">
+            <div class="stat rv">
+                <div class="stat-n" data-to="50">0</div>
+                <div class="stat-l"><span class="ar-t">+ مشروع مكتمل</span><span class="en-t">+ Projects Done</span></div>
+            </div>
+            <div class="stat rv d1">
+                <div class="stat-n" data-to="40">0</div>
+                <div class="stat-l"><span class="ar-t">+ عميل راضٍ</span><span class="en-t">+ Happy Clients</span></div>
+            </div>
+            <div class="stat rv d2">
+                <div class="stat-n" data-to="6">0</div>
+                <div class="stat-l"><span class="ar-t">+ سنوات خبرة</span><span class="en-t">+ Years Experience</span></div>
+            </div>
+            <div class="stat rv d3">
+                <div class="stat-n" data-to="5">0</div>
+                <div class="stat-l"><span class="ar-t">+ دول خدمناها</span><span class="en-t">+ Countries Served</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════ SERVICES ═══ -->
+<section id="services" class="section">
+    <div class="container">
+        <div class="sec-head center rv">
+            <div class="sec-tag">⚡ <span class="ar-t">خدماتنا</span><span class="en-t">Our Services</span></div>
+            <h2 class="sec-title">
+                <span class="ar-t">كل ما تحتاجه <span class="gt">في مكان واحد</span></span>
+                <span class="en-t">Everything You Need <span class="gt">In One Place</span></span>
+            </h2>
+            <p class="sec-desc">
+                <span class="ar-t">خدمات تصميم وتطوير شاملة لكل نوع من المواقع بأعلى معايير الجودة</span>
+                <span class="en-t">Comprehensive design and development services for every type of website at the highest quality standards</span>
+            </p>
+        </div>
+
+        <div class="svc-grid">
+
+            <div class="svc-card rv">
+                <div class="svc-num">01</div>
+                <div class="svc-inner">
+                    <div class="svc-ico" style="background:rgba(6,182,212,.1)">🛒</div>
+                    <h3 class="svc-title"><span class="ar-t">المتاجر الإلكترونية</span><span class="en-t">E-Commerce Stores</span></h3>
+                    <p class="svc-desc"><span class="ar-t">متاجر احترافية عالية الأداء مع بوابات دفع متكاملة وتجربة تسوق سلسة تزيد مبيعاتك وتبني ثقة عملائك.</span><span class="en-t">High-performance professional stores with integrated payment gateways and smooth shopping experiences that boost your sales.</span></p>
+                </div>
+            </div>
+
+            <div class="svc-card rv d1">
+                <div class="svc-num">02</div>
+                <div class="svc-inner">
+                    <div class="svc-ico" style="background:rgba(245,158,11,.1)">🏢</div>
+                    <h3 class="svc-title"><span class="ar-t">مواقع العقارات</span><span class="en-t">Real Estate Websites</span></h3>
+                    <p class="svc-desc"><span class="ar-t">مواقع عقارية فاخرة مع معارض تفاعلية وخرائط وأنظمة بحث متقدمة تعرض مشاريعك بأفضل صورة ممكنة.</span><span class="en-t">Luxury real estate sites with interactive galleries, maps, and advanced search systems that showcase your projects beautifully.</span></p>
+                </div>
+            </div>
+
+            <div class="svc-card rv d2">
+                <div class="svc-num">03</div>
+                <div class="svc-inner">
+                    <div class="svc-ico" style="background:rgba(239,68,68,.1)">📰</div>
+                    <h3 class="svc-title"><span class="ar-t">البوابات الإخبارية</span><span class="en-t">News Portals</span></h3>
+                    <p class="svc-desc"><span class="ar-t">منصات إخبارية سريعة وقابلة للتوسع مع أنظمة إدارة محتوى متطورة ودعم كامل للغة العربية واتجاه RTL.</span><span class="en-t">Fast and scalable news platforms with advanced CMS and full Arabic RTL support built for high traffic.</span></p>
+                </div>
+            </div>
+
+            <div class="svc-card rv">
+                <div class="svc-num">04</div>
+                <div class="svc-inner">
+                    <div class="svc-ico" style="background:rgba(236,72,153,.1)">✈️</div>
+                    <h3 class="svc-title"><span class="ar-t">مواقع السياحة والسفر</span><span class="en-t">Tourism & Travel</span></h3>
+                    <p class="svc-desc"><span class="ar-t">مواقع سياحية مذهلة بتصميمات بصرية تشجع على الحجز مع أنظمة حجز متكاملة وعروض رحلات تفاعلية.</span><span class="en-t">Stunning tourism websites with visual designs that encourage bookings, integrated reservation systems, and interactive tour displays.</span></p>
+                </div>
+            </div>
+
+            <div class="svc-card rv d1">
+                <div class="svc-num">05</div>
+                <div class="svc-inner">
+                    <div class="svc-ico" style="background:rgba(34,197,94,.1)">🚗</div>
+                    <h3 class="svc-title"><span class="ar-t">مواقع النقل والسيارات</span><span class="en-t">Transport & Cars</span></h3>
+                    <p class="svc-desc"><span class="ar-t">مواقع احترافية لشركات النقل وتأجير السيارات مع أنظمة حجز ذكية وتتبع وخرائط متكاملة.</span><span class="en-t">Professional sites for transport companies and car rentals with smart booking systems, tracking, and integrated maps.</span></p>
+                </div>
+            </div>
+
+            <div class="svc-card rv d2">
+                <div class="svc-num">06</div>
+                <div class="svc-inner">
+                    <div class="svc-ico" style="background:rgba(124,58,237,.1)">🎓</div>
+                    <h3 class="svc-title"><span class="ar-t">المواقع التعليمية</span><span class="en-t">Educational Platforms</span></h3>
+                    <p class="svc-desc"><span class="ar-t">منصات تعليمية تفاعلية مع إدارة الطلاب والكورسات والاختبارات وشهادات الإنجاز الرقمية.</span><span class="en-t">Interactive educational platforms with student management, courses, quizzes, and digital achievement certificates.</span></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════ PORTFOLIO ═══ -->
+<section id="portfolio" class="section">
+    <div class="container">
+        <!-- Portfolio header -->
+        <div style="text-align:center;margin-bottom:64px" class="rv">
+            <div class="sec-tag">🎨 <span class="ar-t">أعمالنا</span><span class="en-t">Our Work</span></div>
+            <h2 class="sec-title" style="margin-top:14px">
+                <span class="ar-t">مشاريع <span class="gt">نفخر بها</span></span>
+                <span class="en-t">Projects We're <span class="gt">Proud Of</span></span>
+            </h2>
+
+            <!-- Big number + countries -->
+            <div style="display:flex;align-items:center;justify-content:center;gap:32px;margin:28px 0 36px;flex-wrap:wrap">
+                <div style="text-align:center">
+                    <div style="font-size:5rem;font-weight:900;line-height:1;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-family:var(--fe)">50<span style="font-size:2.5rem">+</span></div>
+                    <div style="font-size:.9rem;color:var(--tx-m);margin-top:4px"><span class="ar-t">موقع مكتمل</span><span class="en-t">Websites Delivered</span></div>
+                </div>
+                <div style="width:1px;height:70px;background:var(--gb)"></div>
+                <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+                    <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--gb);padding:8px 16px;border-radius:50px;font-size:.82rem;color:var(--tx-m)">🇪🇬 <span class="ar-t">مصر</span><span class="en-t">Egypt</span></span>
+                    <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--gb);padding:8px 16px;border-radius:50px;font-size:.82rem;color:var(--tx-m)">🇸🇦 <span class="ar-t">السعودية</span><span class="en-t">Saudi</span></span>
+                    <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--gb);padding:8px 16px;border-radius:50px;font-size:.82rem;color:var(--tx-m)">🇦🇪 <span class="ar-t">الإمارات</span><span class="en-t">UAE</span></span>
+                    <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--gb);padding:8px 16px;border-radius:50px;font-size:.82rem;color:var(--tx-m)">🇱🇾 <span class="ar-t">ليبيا</span><span class="en-t">Libya</span></span>
+                </div>
+            </div>
+
+            <!-- Category count chips -->
+            <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+                <div style="display:flex;align-items:center;gap:8px;background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.2);padding:10px 20px;border-radius:50px">
+                    <span style="font-size:1.1rem;font-weight:900;color:#06B6D4;font-family:var(--fe)">11</span>
+                    <span style="font-size:.82rem;color:var(--tx-m)">🛒 <span class="ar-t">متجر إلكتروني</span><span class="en-t">E-Commerce</span></span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);padding:10px 20px;border-radius:50px">
+                    <span style="font-size:1.1rem;font-weight:900;color:#F59E0B;font-family:var(--fe)">7</span>
+                    <span style="font-size:.82rem;color:var(--tx-m)">🏢 <span class="ar-t">عقاري</span><span class="en-t">Real Estate</span></span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;background:rgba(236,72,153,.08);border:1px solid rgba(236,72,153,.2);padding:10px 20px;border-radius:50px">
+                    <span style="font-size:1.1rem;font-weight:900;color:#EC4899;font-family:var(--fe)">4</span>
+                    <span style="font-size:.82rem;color:var(--tx-m)">✈️ <span class="ar-t">سياحي</span><span class="en-t">Tourism</span></span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);padding:10px 20px;border-radius:50px">
+                    <span style="font-size:1.1rem;font-weight:900;color:#EF4444;font-family:var(--fe)">2</span>
+                    <span style="font-size:.82rem;color:var(--tx-m)">📰 <span class="ar-t">إخباري</span><span class="en-t">News</span></span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);padding:10px 20px;border-radius:50px">
+                    <span style="font-size:1.1rem;font-weight:900;color:#22C55E;font-family:var(--fe)">3</span>
+                    <span style="font-size:.82rem;color:var(--tx-m)">🚗 <span class="ar-t">نقل</span><span class="en-t">Transport</span></span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.2);padding:10px 20px;border-radius:50px">
+                    <span style="font-size:1.1rem;font-weight:900;color:#A78BFA;font-family:var(--fe)">5</span>
+                    <span style="font-size:.82rem;color:var(--tx-m)">🎓 <span class="ar-t">تعليمي</span><span class="en-t">Education</span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter buttons -->
+        <div class="pf-filters rv">
+            <button class="fb on" data-f="all"><span class="ar-t">الكل</span><span class="en-t">All</span></button>
+            <button class="fb" data-f="ec">🛒 <span class="ar-t">متاجر</span><span class="en-t">E-Commerce</span></button>
+            <button class="fb" data-f="re">🏢 <span class="ar-t">عقارات</span><span class="en-t">Real Estate</span></button>
+            <button class="fb" data-f="nw">📰 <span class="ar-t">أخبار</span><span class="en-t">News</span></button>
+            <button class="fb" data-f="tr">✈️ <span class="ar-t">سياحة</span><span class="en-t">Tourism</span></button>
+            <button class="fb" data-f="ca">🚗 <span class="ar-t">سيارات</span><span class="en-t">Cars</span></button>
+            <button class="fb" data-f="ed">🎓 <span class="ar-t">تعليم</span><span class="en-t">Education</span></button>
+        </div>
+
+        <!-- Grid -->
+        <div class="pf-grid" id="pfGrid">
+
+            <!-- ── E-COMMERCE ── -->
+            <div class="pf-item" data-c="ec">
+                <div class="pf-thumb bg-ec"><div class="pf-emoji">🛒</div>
+                    <div class="pf-ov"><a href="https://autofaz.com/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-ec">🛒 <span class="ar-t">متجر إلكتروني</span><span class="en-t">E-Commerce</span></span>
+                    <div class="pf-name">Autofaz</div><div class="pf-url">autofaz.com</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="ec">
+                <div class="pf-thumb bg-ec"><div class="pf-emoji">💻</div>
+                    <div class="pf-ov"><a href="https://nuvionics.com/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-ec">🛒 <span class="ar-t">متجر إلكتروني</span><span class="en-t">E-Commerce</span></span>
+                    <div class="pf-name">Nuvionics</div><div class="pf-url">nuvionics.com</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="ec">
+                <div class="pf-thumb bg-ec"><div class="pf-emoji">👗</div>
+                    <div class="pf-ov"><a href="http://shop.omashonline.com/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-ec">🛒 <span class="ar-t">متجر إلكتروني</span><span class="en-t">E-Commerce</span></span>
+                    <div class="pf-name">Omash Online</div><div class="pf-url">shop.omashonline.com</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="ec">
+                <div class="pf-thumb bg-ec"><div class="pf-emoji">🛍️</div>
+                    <div class="pf-ov"><a href="https://1010-shop.com/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-ec">🛒 <span class="ar-t">متجر إلكتروني</span><span class="en-t">E-Commerce</span></span>
+                    <div class="pf-name">1010 Shop</div><div class="pf-url">1010-shop.com</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="ec">
+                <div class="pf-thumb bg-ec"><div class="pf-emoji">🍕</div>
+                    <div class="pf-ov"><a href="https://tagensetto.com/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-ec">🛒 <span class="ar-t">متجر إلكتروني</span><span class="en-t">E-Commerce</span></span>
+                    <div class="pf-name">Tagensetto</div><div class="pf-url">tagensetto.com</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="ec">
+                <div class="pf-thumb bg-ec"><div class="pf-emoji">💍</div>
+                    <div class="pf-ov"><a href="https://zfat-zfafy.com/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-ec">🛒 <span class="ar-t">متجر إلكتروني</span><span class="en-t">E-Commerce</span></span>
+                    <div class="pf-name">Zfat Zfafy</div><div class="pf-url">zfat-zfafy.com</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="ec">
+                <div class="pf-thumb bg-ec"><div class="pf-emoji">🔥</div>
+                    <div class="pf-ov"><a href="https://bbqhouse.shop/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-ec">🛒 <span class="ar-t">متجر إلكتروني</span><span class="en-t">E-Commerce</span></span>
+                    <div class="pf-name">BBQ House</div><div class="pf-url">bbqhouse.shop</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="ec">
+                <div class="pf-thumb bg-ec"><div class="pf-emoji">💎</div>
+                    <div class="pf-ov"><a href="https://thevaultegypt.com/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-ec">🛒 <span class="ar-t">متجر إلكتروني</span><span class="en-t">E-Commerce</span></span>
+                    <div class="pf-name">The Vault Egypt</div><div class="pf-url">thevaultegypt.com</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="ec">
+                <div class="pf-thumb bg-ec"><div class="pf-emoji">🖨️</div>
+                    <div class="pf-ov"><a href="https://almotahedadigitalprinting.com/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-ec">🛒 <span class="ar-t">متجر إلكتروني</span><span class="en-t">E-Commerce</span></span>
+                    <div class="pf-name">Almotaheda Digital Printing</div><div class="pf-url">almotahedadigitalprinting.com</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="ec">
+                <div class="pf-thumb bg-ec"><div class="pf-emoji">🏠</div>
+                    <div class="pf-ov"><a href="http://emkanataltatwir.com/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-ec">🛒 <span class="ar-t">متجر إلكتروني</span><span class="en-t">E-Commerce</span></span>
+                    <div class="pf-name">Emkanat Al-Tatwir</div><div class="pf-url">emkanataltatwir.com</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="ec">
+                <div class="pf-thumb bg-ec"><div class="pf-emoji">🎭</div>
+                    <div class="pf-ov"><a href="http://stage-house.com" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-ec">🛒 <span class="ar-t">متجر إلكتروني</span><span class="en-t">E-Commerce</span></span>
+                    <div class="pf-name">Stage House</div><div class="pf-url">stage-house.com</div>
+                </div>
+            </div>
+
+            <!-- ── REAL ESTATE ── -->
+            <div class="pf-item" data-c="re">
+                <div class="pf-thumb bg-re"><div class="pf-emoji">🏗️</div>
+                    <div class="pf-ov"><a href="https://almasnaa.com/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-re">🏢 <span class="ar-t">عقارات</span><span class="en-t">Real Estate</span></span>
+                    <div class="pf-name">Al Masnaa</div><div class="pf-url">almasnaa.com</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="re">
+                <div class="pf-thumb bg-re"><div class="pf-emoji">🏙️</div>
+                    <div class="pf-ov"><a href="https://zaherdevelopments.com/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-re">🏢 <span class="ar-t">عقارات</span><span class="en-t">Real Estate</span></span>
+                    <div class="pf-name">Zaher Developments</div><div class="pf-url">zaherdevelopments.com</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="re">
+                <div class="pf-thumb bg-re"><div class="pf-emoji">🏛️</div>
+                    <div class="pf-ov"><a href="https://vantage-developments.com/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-re">🏢 <span class="ar-t">عقارات</span><span class="en-t">Real Estate</span></span>
+                    <div class="pf-name">Vantage Developments</div><div class="pf-url">vantage-developments.com</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="re">
+                <div class="pf-thumb bg-re"><div class="pf-emoji">🌆</div>
+                    <div class="pf-ov"><a href="https://rnadv.com/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-re">🏢 <span class="ar-t">عقارات</span><span class="en-t">Real Estate</span></span>
+                    <div class="pf-name">RNA Developments</div><div class="pf-url">rnadv.com</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="re">
+                <div class="pf-thumb bg-re"><div class="pf-emoji">🏡</div>
+                    <div class="pf-ov"><a href="https://meraki-egypt.com/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-re">🏢 <span class="ar-t">عقارات</span><span class="en-t">Real Estate</span></span>
+                    <div class="pf-name">Meraki Egypt</div><div class="pf-url">meraki-egypt.com</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="re">
+                <div class="pf-thumb bg-re"><div class="pf-emoji">📸</div>
+                    <div class="pf-ov"><a href="https://archpix.ae/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-re">🏢 <span class="ar-t">عقارات</span><span class="en-t">Real Estate</span></span>
+                    <div class="pf-name">Archpix UAE</div><div class="pf-url">archpix.ae</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="re">
+                <div class="pf-thumb bg-re"><div class="pf-emoji">🔨</div>
+                    <div class="pf-ov"><a href="https://alfath-contracting.com/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-re">🏢 <span class="ar-t">عقارات</span><span class="en-t">Real Estate</span></span>
+                    <div class="pf-name">Al Fath Contracting</div><div class="pf-url">alfath-contracting.com</div>
+                </div>
+            </div>
+
+            <!-- ── NEWS ── -->
+            <div class="pf-item" data-c="nw">
+                <div class="pf-thumb bg-nw"><div class="pf-emoji">📰</div>
+                    <div class="pf-ov"><a href="https://edarablarabi.com/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-nw">📰 <span class="ar-t">إخبارية</span><span class="en-t">News</span></span>
+                    <div class="pf-name">إد العرب العربي</div><div class="pf-url">edarablarabi.com</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="nw">
+                <div class="pf-thumb bg-nw"><div class="pf-emoji">🗞️</div>
+                    <div class="pf-ov"><a href="https://egypt2.com/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-nw">📰 <span class="ar-t">إخبارية</span><span class="en-t">News</span></span>
+                    <div class="pf-name">Egypt 2</div><div class="pf-url">egypt2.com</div>
+                </div>
+            </div>
+
+            <!-- ── TOURISM ── -->
+            <div class="pf-item" data-c="tr">
+                <div class="pf-thumb bg-tr"><div class="pf-emoji">🌴</div>
+                    <div class="pf-ov"><a href="https://m-residence.net/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-tr">✈️ <span class="ar-t">سياحة</span><span class="en-t">Tourism</span></span>
+                    <div class="pf-name">M Residence</div><div class="pf-url">m-residence.net</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="tr">
+                <div class="pf-thumb bg-tr"><div class="pf-emoji">🏖️</div>
+                    <div class="pf-ov"><a href="https://hotegypt.com/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-tr">✈️ <span class="ar-t">سياحة</span><span class="en-t">Tourism</span></span>
+                    <div class="pf-name">Hot Egypt</div><div class="pf-url">hotegypt.com</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="tr">
+                <div class="pf-thumb bg-tr"><div class="pf-emoji">🗺️</div>
+                    <div class="pf-ov"><a href="https://godidatravel.com" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-tr">✈️ <span class="ar-t">سياحة</span><span class="en-t">Tourism</span></span>
+                    <div class="pf-name">Godida Travel</div><div class="pf-url">godidatravel.com</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="tr">
+                <div class="pf-thumb bg-tr"><div class="pf-emoji">🇪🇬</div>
+                    <div class="pf-ov"><a href="https://egypttodaytravel.com/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-tr">✈️ <span class="ar-t">سياحة</span><span class="en-t">Tourism</span></span>
+                    <div class="pf-name">Egypt Today Travel</div><div class="pf-url">egypttodaytravel.com</div>
+                </div>
+            </div>
+
+            <!-- ── CARS / TRANSPORT ── -->
+            <div class="pf-item" data-c="ca">
+                <div class="pf-thumb bg-ca"><div class="pf-emoji">🚕</div>
+                    <div class="pf-ov"><a href="https://zidantravel.com" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-ca">🚗 <span class="ar-t">نقل وسيارات</span><span class="en-t">Transport</span></span>
+                    <div class="pf-name">Zidan Travel</div><div class="pf-url">zidantravel.com</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="ca">
+                <div class="pf-thumb bg-ca"><div class="pf-emoji">🚌</div>
+                    <div class="pf-ov"><a href="https://taxiyultransfer.com/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-ca">🚗 <span class="ar-t">نقل وسيارات</span><span class="en-t">Transport</span></span>
+                    <div class="pf-name">Taxi Yul Transfer</div><div class="pf-url">taxiyultransfer.com</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="ca">
+                <div class="pf-thumb bg-ca"><div class="pf-emoji">✈️</div>
+                    <div class="pf-ov"><a href="https://bonjourtaxiaeroport.com/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-ca">🚗 <span class="ar-t">نقل وسيارات</span><span class="en-t">Transport</span></span>
+                    <div class="pf-name">Bonjour Taxi Aéroport</div><div class="pf-url">bonjourtaxiaeroport.com</div>
+                </div>
+            </div>
+
+            <!-- ── EDUCATION ── -->
+            <div class="pf-item" data-c="ed">
+                <div class="pf-thumb bg-ed"><div class="pf-emoji">📚</div>
+                    <div class="pf-ov"><a href="https://fol.edu.sa/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-ed">🎓 <span class="ar-t">تعليم</span><span class="en-t">Education</span></span>
+                    <div class="pf-name">FOL Education</div><div class="pf-url">fol.edu.sa</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="ed">
+                <div class="pf-thumb bg-ed"><div class="pf-emoji">🎓</div>
+                    <div class="pf-ov"><a href="https://mohamed-gouda.com" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-ed">🎓 <span class="ar-t">تعليم</span><span class="en-t">Education</span></span>
+                    <div class="pf-name">Mohamed Gouda</div><div class="pf-url">mohamed-gouda.com</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="ed">
+                <div class="pf-thumb bg-ed"><div class="pf-emoji">🕌</div>
+                    <div class="pf-ov"><a href="https://alrisala.ly/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-ed">🎓 <span class="ar-t">تعليم</span><span class="en-t">Education</span></span>
+                    <div class="pf-name">Al Risala</div><div class="pf-url">alrisala.ly</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="ed">
+                <div class="pf-thumb bg-ed"><div class="pf-emoji">🏫</div>
+                    <div class="pf-ov"><a href="https://acarea.com.eg/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-ed">🎓 <span class="ar-t">تعليم</span><span class="en-t">Education</span></span>
+                    <div class="pf-name">ACArea</div><div class="pf-url">acarea.com.eg</div>
+                </div>
+            </div>
+
+            <div class="pf-item" data-c="ed">
+                <div class="pf-thumb bg-ed"><div class="pf-emoji">🧭</div>
+                    <div class="pf-ov"><a href="https://masar-eg.org/" target="_blank" rel="noopener" class="pf-link"><span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗</a></div>
+                </div>
+                <div class="pf-info">
+                    <span class="pf-cat c-ed">🎓 <span class="ar-t">تعليم</span><span class="en-t">Education</span></span>
+                    <div class="pf-name">Masar Egypt</div><div class="pf-url">masar-eg.org</div>
+                </div>
+            </div>
+
+        </div><!-- /pf-grid -->
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════ WHY US ═══ -->
+<section id="why" class="section">
+    <div class="container">
+        <div class="why-grid">
+
+            <!-- Left: features -->
+            <div class="rv">
+                <div class="sec-tag">💡 <span class="ar-t">لماذا نحن</span><span class="en-t">Why Us</span></div>
+                <h2 class="sec-title" style="margin-top:16px">
+                    <span class="ar-t">نبني مواقع <span class="gt">تبيع وتنمو</span></span>
+                    <span class="en-t">We Build Sites That <span class="gt">Sell & Grow</span></span>
+                </h2>
+                <p class="sec-desc" style="margin-bottom:34px">
+                    <span class="ar-t">كل موقع نبنيه هو استثمار يحقق عوائد حقيقية — لا مجرد صفحات جميلة</span>
+                    <span class="en-t">Every website we build is an investment that generates real returns — not just pretty pages</span>
+                </p>
+                <div class="why-feats">
+                    <div class="wf">
+                        <div class="wf-ico" style="background:rgba(124,58,237,.1)">⚡</div>
+                        <div class="wf-t">
+                            <h4><span class="ar-t">سرعة فائقة الأداء</span><span class="en-t">Lightning Fast Performance</span></h4>
+                            <p><span class="ar-t">مواقعنا تحصل على 90+ في Google PageSpeed — سرعة التحميل تعني المزيد من العملاء</span><span class="en-t">Our sites score 90+ on Google PageSpeed — faster loading means more conversions</span></p>
+                        </div>
+                    </div>
+                    <div class="wf">
+                        <div class="wf-ico" style="background:rgba(6,182,212,.1)">📱</div>
+                        <div class="wf-t">
+                            <h4><span class="ar-t">تصميم متجاوب أولاً للموبايل</span><span class="en-t">Mobile-First Responsive Design</span></h4>
+                            <p><span class="ar-t">يعمل موقعك بشكل مثالي على كل جهاز — هاتف، تابلت، أو حاسوب</span><span class="en-t">Your site works perfectly on every device — phone, tablet, or desktop</span></p>
+                        </div>
+                    </div>
+                    <div class="wf">
+                        <div class="wf-ico" style="background:rgba(245,158,11,.1)">🔍</div>
+                        <div class="wf-t">
+                            <h4><span class="ar-t">محسّن لمحركات البحث SEO</span><span class="en-t">SEO-Optimized From Day One</span></h4>
+                            <p><span class="ar-t">نبنيه وفق أفضل معايير البحث ليظهر موقعك في النتائج الأولى على Google</span><span class="en-t">Built to SEO best practices so your site ranks on the first page of Google</span></p>
+                        </div>
+                    </div>
+                    <div class="wf">
+                        <div class="wf-ico" style="background:rgba(34,197,94,.1)">🛡️</div>
+                        <div class="wf-t">
+                            <h4><span class="ar-t">أمان واستضافة متكاملة</span><span class="en-t">Full Security & Hosting Support</span></h4>
+                            <p><span class="ar-t">SSL وجدار حماية وإشراف دائم — موقعك محمي وبياناتك في أمان تام</span><span class="en-t">SSL, firewall, and ongoing monitoring — your site and data stay protected</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: process card -->
+            <div class="rv d2">
+                <div class="proc-card">
+                    <h4><span class="ar-t">⚙️ عملية العمل لدينا</span><span class="en-t">⚙️ Our Work Process</span></h4>
+                    <div class="proc-steps">
+                        <div class="ps">
+                            <div class="ps-n">1</div>
+                            <div style="flex:1">
+                                <div class="ps-name"><span class="ar-t">التحليل والتخطيط</span><span class="en-t">Analysis & Planning</span></div>
+                                <div class="ps-bar"><div class="ps-fill" style="width:100%"></div></div>
+                            </div>
+                            <div class="ps-lbl" style="color:#22C55E">✓</div>
+                        </div>
+                        <div class="ps">
+                            <div class="ps-n">2</div>
+                            <div style="flex:1">
+                                <div class="ps-name"><span class="ar-t">التصميم الإبداعي</span><span class="en-t">Creative Design</span></div>
+                                <div class="ps-bar"><div class="ps-fill" style="width:100%"></div></div>
+                            </div>
+                            <div class="ps-lbl" style="color:#22C55E">✓</div>
+                        </div>
+                        <div class="ps">
+                            <div class="ps-n">3</div>
+                            <div style="flex:1">
+                                <div class="ps-name"><span class="ar-t">البرمجة والتطوير</span><span class="en-t">Development</span></div>
+                                <div class="ps-bar"><div class="ps-fill" style="width:100%"></div></div>
+                            </div>
+                            <div class="ps-lbl" style="color:#22C55E">✓</div>
+                        </div>
+                        <div class="ps">
+                            <div class="ps-n">4</div>
+                            <div style="flex:1">
+                                <div class="ps-name"><span class="ar-t">الاختبار والتسليم</span><span class="en-t">Testing & Delivery</span></div>
+                                <div class="ps-bar"><div class="ps-fill" style="width:80%"></div></div>
+                            </div>
+                            <div class="ps-lbl">80%</div>
+                        </div>
+                        <div class="ps">
+                            <div class="ps-n">5</div>
+                            <div style="flex:1">
+                                <div class="ps-name"><span class="ar-t">الدعم والمتابعة</span><span class="en-t">Ongoing Support</span></div>
+                                <div class="ps-bar"><div class="ps-fill" style="width:55%"></div></div>
+                            </div>
+                            <div class="ps-lbl">∞</div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial snippet -->
+                    <div class="mini-t">
+                        <div class="mini-t-top">
+                            <div class="mini-avatar">👤</div>
+                            <div>
+                                <div class="mini-name"><span class="ar-t">أحمد السيد</span><span class="en-t">Ahmed El Sayed</span></div>
+                                <div class="mini-role">CEO, Vantage Developments</div>
+                            </div>
+                            <div class="mini-stars">★★★★★</div>
+                        </div>
+                        <p class="mini-quote">
+                            "<span class="ar-t">تجربة استثنائية — الموقع فاق كل توقعاتنا. فريق محترف وملتزم بالمواعيد بشكل مثير للإعجاب.</span><span class="en-t">An exceptional experience — the website exceeded all our expectations. Professional team, impressively committed to deadlines.</span>"
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════ CONTACT ═══ -->
+<section id="contact" class="section">
+    <div class="container">
+        <div class="sec-head center rv">
+            <div class="sec-tag">📬 <span class="ar-t">تواصل معنا</span><span class="en-t">Contact Us</span></div>
+            <h2 class="sec-title">
+                <span class="ar-t">ابدأ <span class="gt">مشروعك</span> اليوم</span>
+                <span class="en-t">Start Your <span class="gt">Project</span> Today</span>
+            </h2>
+            <p class="sec-desc">
+                <span class="ar-t">أخبرنا عن فكرتك وسنرد عليك خلال 24 ساعة بخطة واضحة وعرض سعر مجاني</span>
+                <span class="en-t">Tell us your idea and we'll reply within 24 hours with a clear plan and free quote</span>
+            </p>
+        </div>
+
+        <div class="ct-grid">
+            <!-- Info -->
+            <div class="rv">
+                <div class="ct-items">
+                    <div class="ct-item">
+                        <div class="ct-ico">📍</div>
+                        <div>
+                            <h4><span class="ar-t">الموقع</span><span class="en-t">Location</span></h4>
+                            <p><span class="ar-t">القاهرة، مصر</span><span class="en-t">Cairo, Egypt</span></p>
+                        </div>
+                    </div>
+                    <div class="ct-item">
+                        <div class="ct-ico">⏰</div>
+                        <div>
+                            <h4><span class="ar-t">ساعات العمل</span><span class="en-t">Working Hours</span></h4>
+                            <p><span class="ar-t">السبت – الخميس: 9ص – 7م</span><span class="en-t">Sat – Thu: 9am – 7pm</span></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Social pills -->
+            </div>
+
+            <!-- Form -->
+            <div class="ct-form rv d2">
+                <h3><span class="ar-t">أخبرنا عن مشروعك</span><span class="en-t">Tell Us About Your Project</span></h3>
+                <form id="ctForm" onsubmit="submitForm(event)" novalidate>
+                    <div class="f-row">
+                        <div class="fg">
+                            <label class="fl"><span class="ar-t">الاسم</span><span class="en-t">Full Name</span></label>
+                            <input type="text" class="fi" required>
+                        </div>
+                        <div class="fg">
+                            <label class="fl"><span class="ar-t">رقم الهاتف</span><span class="en-t">Phone</span></label>
+                            <input type="tel" class="fi" dir="ltr" placeholder="+20...">
+                        </div>
+                    </div>
+                    <div class="fg">
+                        <label class="fl"><span class="ar-t">البريد الإلكتروني</span><span class="en-t">Email</span></label>
+                        <input type="email" class="fi" dir="ltr" placeholder="you@example.com" required>
+                    </div>
+                    <div class="fg">
+                        <label class="fl"><span class="ar-t">نوع الموقع المطلوب</span><span class="en-t">Website Type</span></label>
+                        <select class="fsel">
+                            <option value=""><span class="ar-t">اختر نوع الموقع…</span></option>
+                            <option value="ec">🛒 <span class="ar-t">متجر إلكتروني</span><span class="en-t">E-Commerce</span></option>
+                            <option value="re">🏢 <span class="ar-t">موقع عقاري</span><span class="en-t">Real Estate</span></option>
+                            <option value="nw">📰 <span class="ar-t">موقع إخباري</span><span class="en-t">News Portal</span></option>
+                            <option value="tr">✈️ <span class="ar-t">موقع سياحي</span><span class="en-t">Tourism</span></option>
+                            <option value="ca">🚗 <span class="ar-t">نقل وسيارات</span><span class="en-t">Transport</span></option>
+                            <option value="ed">🎓 <span class="ar-t">موقع تعليمي</span><span class="en-t">Education</span></option>
+                            <option value="ot">⚙️ <span class="ar-t">أخرى</span><span class="en-t">Other</span></option>
+                        </select>
+                    </div>
+                    <div class="fg">
+                        <label class="fl"><span class="ar-t">تفاصيل المشروع</span><span class="en-t">Project Details</span></label>
+                        <textarea class="fta" placeholder="..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-p f-submit" id="fBtn">
+                        🚀 <span class="ar-t">إرسال الطلب</span><span class="en-t">Send Request</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════ FOOTER ═══ -->
+<footer>
+    <div class="container">
+        <div class="ft-grid">
+            <div class="ft-brand">
+                <a href="#home" class="logo">
+                    <div class="logo-mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6"/>
+                            <polyline points="8 6 2 12 8 18"/>
+                        </svg>
+                    </div>
+                    <div class="logo-words">
+                        <span class="logo-en">WebCraft</span>
+                        <span class="logo-ar">ويب كرافت</span>
+                    </div>
+                </a>
+                <p><span class="ar-t">وكالة تصميم مواقع احترافية متخصصة في بناء تجارب رقمية استثنائية تحقق أهدافك التجارية.</span><span class="en-t">A professional web design agency specializing in building exceptional digital experiences that achieve your business goals.</span></p>
+            </div>
+
+            <div class="ft-col">
+                <h4><span class="ar-t">خدماتنا</span><span class="en-t">Services</span></h4>
+                <ul class="ft-links">
+                    <li><a href="#services"><span class="ar-t">المتاجر الإلكترونية</span><span class="en-t">E-Commerce</span></a></li>
+                    <li><a href="#services"><span class="ar-t">مواقع العقارات</span><span class="en-t">Real Estate</span></a></li>
+                    <li><a href="#services"><span class="ar-t">البوابات الإخبارية</span><span class="en-t">News Portals</span></a></li>
+                    <li><a href="#services"><span class="ar-t">مواقع السياحة</span><span class="en-t">Tourism Sites</span></a></li>
+                    <li><a href="#services"><span class="ar-t">المواقع التعليمية</span><span class="en-t">Educational</span></a></li>
+                </ul>
+            </div>
+
+            <div class="ft-col">
+                <h4><span class="ar-t">روابط سريعة</span><span class="en-t">Quick Links</span></h4>
+                <ul class="ft-links">
+                    <li><a href="#home"><span class="ar-t">الرئيسية</span><span class="en-t">Home</span></a></li>
+                    <li><a href="#portfolio"><span class="ar-t">أعمالنا</span><span class="en-t">Portfolio</span></a></li>
+                    <li><a href="#why"><span class="ar-t">لماذا نحن</span><span class="en-t">Why Us</span></a></li>
+                    <li><a href="#contact"><span class="ar-t">تواصل معنا</span><span class="en-t">Contact</span></a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="ft-bot">
+            <p>© 2025 WebCraft. <span class="ar-t">جميع الحقوق محفوظة.</span><span class="en-t">All rights reserved.</span></p>
+            <p><span class="ar-t">صُنع بـ ❤️ في مصر</span><span class="en-t">Made with ❤️ in Egypt</span></p>
+        </div>
+    </div>
+</footer>
+
+<!-- ═══════════════════════════════════════ SCRIPTS ═══ -->
+<script>
+/* ── Language ── */
+function setLang(l) {
+    const b = document.body, h = document.documentElement;
+    if (l === 'ar') {
+        b.classList.remove('en'); h.setAttribute('dir','rtl'); h.setAttribute('lang','ar');
+        document.getElementById('lbAR').classList.add('on');
+        document.getElementById('lbEN').classList.remove('on');
+    } else {
+        b.classList.add('en'); h.setAttribute('dir','ltr'); h.setAttribute('lang','en');
+        document.getElementById('lbEN').classList.add('on');
+        document.getElementById('lbAR').classList.remove('on');
+    }
+}
+
+/* ── Mobile menu ── */
+function toggleMob() {
+    const m = document.getElementById('mobMenu'), h = document.getElementById('ham');
+    const open = m.classList.toggle('open');
+    h.classList.toggle('on', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+}
+function closeMob() {
+    document.getElementById('mobMenu').classList.remove('open');
+    document.getElementById('ham').classList.remove('on');
+    document.body.style.overflow = '';
+}
+
+/* ── Sticky header ── */
+window.addEventListener('scroll', () => {
+    document.getElementById('hdr').classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
+/* ── Scroll reveal ── */
+const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv').forEach(el => ro.observe(el));
+
+/* ── Counter animation ── */
+function runCounter(el) {
+    const target = +el.dataset.to;
+    const dur = 1800;
+    const step = target / (dur / 16);
+    let cur = 0;
+    const t = setInterval(() => {
+        cur = Math.min(cur + step, target);
+        el.textContent = Math.floor(cur) + '+';
+        if (cur >= target) clearInterval(t);
+    }, 16);
+}
+const co = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { runCounter(e.target); co.unobserve(e.target); } });
+}, { threshold: 0.6 });
+document.querySelectorAll('[data-to]').forEach(el => co.observe(el));
+
+/* ── Portfolio filter ── */
+document.querySelectorAll('.fb').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.fb').forEach(b => b.classList.remove('on'));
+        btn.classList.add('on');
+        const f = btn.dataset.f;
+        document.querySelectorAll('.pf-item').forEach(item => {
+            const show = f === 'all' || item.dataset.c === f;
+            item.classList.toggle('hide', !show);
+            if (show) item.style.animation = 'fadeUp .4s ease forwards';
+        });
+    });
+});
+
+/* ── Smooth scroll ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+    });
+});
+
+/* ── Form submit ── */
+function submitForm(e) {
+    e.preventDefault();
+    const btn = document.getElementById('fBtn');
+    const ar = !document.body.classList.contains('en');
+    btn.innerHTML = ar ? '✓ تم الإرسال بنجاح!' : '✓ Sent Successfully!';
+    btn.style.background = 'linear-gradient(135deg,#22C55E,#16A34A)';
+    setTimeout(() => {
+        btn.innerHTML = '🚀 ' + (ar ? '<span class="ar-t">إرسال الطلب</span>' : '<span class="en-t">Send Request</span>');
+        btn.style.background = '';
+        e.target.reset();
+    }, 3500);
+}
+
+/* Keyframe injection */
+const s = document.createElement('style');
+s.textContent = '@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}';
+document.head.appendChild(s);
+
+/* Make entire portfolio card clickable */
+document.querySelectorAll('.pf-item').forEach(card => {
+    const link = card.querySelector('.pf-link');
+    if (!link) return;
+    // Add visible "visit" label in info
+    const info = card.querySelector('.pf-info');
+    if (info) {
+        const v = document.createElement('div');
+        v.className = 'pf-visit';
+        v.innerHTML = '<span class="ar-t">زيارة الموقع</span><span class="en-t">Visit Site</span> ↗';
+        info.appendChild(v);
+    }
+    card.addEventListener('click', () => window.open(link.href, '_blank', 'noopener'));
+});
+</script>
+
+</body>
+</html>
