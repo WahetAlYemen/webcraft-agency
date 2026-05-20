@@ -1,0 +1,19 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "powershell",
+            "command": "Set-Location 'D:\\Claude AI Insiders\\ourwebsitecompany'; git add -A; $s = git status --porcelain; if ($s) { git commit -m \"Auto-deploy: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')\"; git push } 2>$null",
+            "timeout": 30,
+            "statusMessage": "Deploying to GitHub...",
+            "async": true
+          }
+        ]
+      }
+    ]
+  }
+}
