@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Start-Process \"d:\\\\Claude AI Insiders\\\\ourwebsitecompany\\\\index.html\")",
+      "PowerShell(Start-Process \"d:\\\\Claude AI Insiders\\\\ourwebsitecompany\\\\index.html\")",
+      "Bash(git --version)",
+      "Bash(gh --version)",
+      "Bash(gh auth *)",
+      "Bash(git init *)",
+      "Bash(git commit *)",
+      "Bash(gh repo *)",
+      "Bash(wrangler --version)",
+      "Bash(npx wrangler *)",
+      "Skill(update-config)",
+      "Skill(update-config:*)",
+      "PowerShell(Set-Location \"d:\\\\Claude AI Insiders\\\\ourwebsitecompany\"; git add -A; $s = git status --porcelain; if \\($s\\) { git commit -m \"Auto-deploy: $\\(Get-Date -Format 'yyyy-MM-dd HH:mm:ss'\\)\"; git push } else { Write-Host \"Nothing to commit\" })"
+    ]
+  }
+}
